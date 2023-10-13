@@ -6,9 +6,9 @@ import icons from './../app/utilities/icons';
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
-  const [hiddenMobile, setHiddenMobile] = useState(false);
+  const [navbar, setNavbar] = useState(false);
   const [language, setLanguage] = useState('sp');
-  const menu = hiddenMobile ? 'w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden': 
+  const menu = navbar ? 'w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden': 
   'w-full block flex-grow lg:flex lg:items-center lg:w-auto';
   const langContent = dictionary;
   const content = langContent[language];
@@ -31,7 +31,6 @@ export default function Home() {
       </div>
     );
   });
-  
   const aboutMe = () => {
     return(
       language == 'sp'?
@@ -49,7 +48,6 @@ export default function Home() {
         </div>
     );
   };
-
   const iconsMap = Object.entries(icons).map(([key, value]) => {
     return (
       <div key={key}>
@@ -62,8 +60,6 @@ export default function Home() {
     );
   });
 
-
-  // const classToggle = document.getElementById('menu').classList.toggle('hidden');
   return (
     <div className={darkMode?'dark' : ''}>
       <Head>
@@ -83,6 +79,40 @@ export default function Home() {
             </span>
           </div>
           <div className="block lg:hidden">
+          <button
+                  className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                  onClick={() => setNavbar(!navbar)}
+                >
+                  {navbar ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6 text-white"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="w-6 h-6 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    </svg>
+                  )}
+                </button>
           </div>
           <div id='menu' className={menu}>
             <div className="text-sm lg:flex-grow">
@@ -99,7 +129,7 @@ export default function Home() {
                 Projects
               </a>
             </div>
-            <div className='flex mx-3 lg:mr-5'>
+            <div className='flex flex-col sm:mx-0 my-1 sm:flex-row md:mx-3 lg:mr-5'>
             <div className='flex items-center font-bold'>
               <button id='en' onClick={()=>setLanguage('en')} className="block mt-4 lg:inline-block lg:mt-0 text-transparent bg-clip-text bg-pink-500 hover:text-white mr-4">
                   EN
