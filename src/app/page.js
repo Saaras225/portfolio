@@ -8,6 +8,8 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [navbar, setNavbar] = useState(false);
   const [language, setLanguage] = useState('sp');
+  const tech = language == 'sp'? 'Tecnologías' : 'Technologies';
+  const project = language == 'sp'? 'Tecnologías' : 'Technologies';
   const menu = navbar ? 'w-full block flex-grow lg:flex lg:items-center lg:w-auto hidden': 
   'w-full block flex-grow lg:flex lg:items-center lg:w-auto';
   const langContent = dictionary;
@@ -213,7 +215,7 @@ export default function Home() {
           <div className='flex flex-col-reverse lg:m-auto lg:flex-row items-center'>
             <div className='rounded-lg border-4 border-purple-500 backdrop-opacity-10 backdrop-invert bg-slate-300 dark:bg-transparent text-center items-center mx-8 mt-8 md:w-3/4 lg:m-12'>
               <div className='flex flex-col justify-center lg:w-1/2 m-auto'>
-                <h3 className='text-base md:text-2xl lg:text-5xl font-mono text-transparent font-semibold mt-5 bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>Tecnologías</h3>
+                <h3 className='text-base md:text-2xl lg:text-5xl font-mono text-transparent font-semibold mt-5 bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>{tech}</h3>
                 <div className='flex flex-wrap justify-center self-center'>
                   {iconsMap}
                 </div>
@@ -242,7 +244,7 @@ export default function Home() {
             </div>
             <div className='flex flex-col rounded-lg border-4 border-purple-500 backdrop-opacity-10 backdrop-invert bg-slate-300 dark:bg-transparent'>
               <div className='text-center'>
-                <h3 className='text-base md:text-xl lg:text-5xl font-semibold font-mono text-transparent py-5 bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>projects</h3>
+                <h3 className='text-base md:text-xl lg:text-5xl font-semibold font-mono text-transparent py-5 bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>{project}</h3>
               </div>
               <div id='cards' className='mb-5 flex flex-wrap justify-center self-center gap-3 w-full lg:grid-cols-3'>
                 {projectsMap}
